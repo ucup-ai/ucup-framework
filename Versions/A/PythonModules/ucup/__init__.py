@@ -26,21 +26,21 @@ from .probabilistic.agent import ProbabilisticAgent, ProbabilisticResult
 
 # Coordination (GCD-based)
 from .coordination.hierarchical import HierarchicalCoordinator
+from .coordination.swarm import SwarmCoordinator
+from .coordination.adaptive import AdaptiveCoordinator
 
-# Multimodal processing (Vision + AVFoundation) - TODO: Implement multimodal modules
-# from .multimodal.vision_processor import VisionProcessor
-# from .multimodal.audio_processor import AudioProcessor
-# from .multimodal.fusion_engine import MultimodalFusionEngine
+# Multimodal processing (Vision + AVFoundation)
+from .multimodal.fusion_engine import MultimodalFusionEngine
 
-# Testing and validation - TODO: Implement testing modules
-# from .testing.agent_tester import AgentTester
-# from .testing.performance_validator import PerformanceValidator
-# from .testing.scenario_generator import ScenarioGenerator
+# Testing and validation
+from .testing.agent_tester import AgentTester
+from .testing.performance_validator import PerformanceValidator
+from .testing.scenario_generator import ScenarioGenerator
 
-# Observability - TODO: Implement observability modules
-# from .observability.monitor import SystemMonitor
-# from .observability.metrics import MetricsCollector
-# from .observability.visualizer import DecisionVisualizer
+# Observability
+from .observability.monitor import SystemMonitor
+from .observability.metrics import MetricsCollector
+from .observability.visualizer import DecisionVisualizer
 
 # Initialize the framework
 def initialize_ucup(config_path: str = None) -> UCUPManager:
@@ -98,8 +98,6 @@ __all__ = [
     "create_coordinator",
 
     # Multimodal
-    "VisionProcessor",
-    "AudioProcessor",
     "MultimodalFusionEngine",
     "create_multimodal_processor",
 
