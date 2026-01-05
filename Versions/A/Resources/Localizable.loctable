@@ -1,0 +1,17 @@
+/* Localizable.loctable - Framework localized strings */
+
+/* Error Messages */
+"UCUP_Framework_Load_Error" = "Failed to load UCUP framework";
+"UCUP_Invalid_Configuration" = "Invalid configuration provided";
+"UCUP_Initialization_Failed" = "Framework initialization failed";
+
+/* Status Messages */
+"UCUP_Framework_Ready" = "UCUP framework is ready";
+"UCUP_Processing_Complete" = "Processing completed successfully";
+"UCUP_Task_Queued" = "Task has been queued for processing";
+
+/* Configuration Keys */
+"UCUP_Config_CoreML" = "Core ML acceleration settings";
+"UCUP_Config_GCD" = "Grand Central Dispatch settings";
+"UCUP_Config_Vision" = "Computer vision settings";
+"UCUP_Config_Audio" = "Audio processing settings";

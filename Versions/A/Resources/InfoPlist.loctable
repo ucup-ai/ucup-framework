@@ -1,0 +1,5 @@
+/* InfoPlist.loctable - Localization table for Info.plist strings */
+
+"CFBundleDisplayName" = "UCUP Framework";
+"CFBundleName" = "UCUP";
+"NSHumanReadableCopyright" = "Copyright © 2025 UCUP Framework Contributors. All rights reserved.";

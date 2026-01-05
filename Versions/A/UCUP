@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+UCUP Framework Binary
+Compiled executable for the UCUP macOS framework.
+
+This binary provides command-line access to UCUP functionality.
+"""
+
+import sys
+import os
+import json
+from datetime import datetime
+
+# Add framework Python modules to path
+framework_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+python_modules = os.path.join(framework_root, 'Versions', 'A', 'PythonModules')
+if python_modules not in sys.path:
+    sys.path.insert(0, python_modules)
+
+def print_framework_info():
+    """Print framework information."""
+    print("UCUP Framework v1.0.0")
+    print("=" * 50)
+    print("Unified Cognitive Uncertainty Processing")
+    print("macOS Native Framework")
+    print()
+    print("Capabilities:")
+    print("  • Core ML accelerated probabilistic reasoning")
+    print("  • Grand Central Dispatch coordination")
+    print("  • Vision and AVFoundation multimodal processing")
+    print("  • Hierarchical, Swarm, and Adaptive coordination")
+    print("  • Security framework integration")
+    print()
+    print("Framework Location:", framework_root)
+    print("Python Modules:", python_modules)
+    print("Platform: macOS")
+    print("Architecture: Universal")
+
+def print_version():
+    """Print version information."""
+    version_info = {
+        "framework": "UCUP",
+        "version": "1.0.0",
+        "build": "1",
+        "platform": "macOS",
+        "architecture": "Universal",
+        "python_version": sys.version.split()[0],
+        "timestamp": datetime.now().isoformat()
+    }
+    print(json.dumps(version_info, indent=2))
+
+def run_basic_test():
+    """Run basic framework test."""
+    print("Testing UCUP Framework...")
+    print()
+
+    try:
+        # Test basic imports
+        print("Testing imports...")
+
+        from ucup.core.config import UCUPConfig
+        print("✓ Configuration system")
+
+        from ucup.core.manager import UCUPManager
+        print("✓ Framework manager")
+
+        from ucup.probabilistic.engine import ProbabilisticEngine
+        print("✓ Probabilistic engine")
+
+        from ucup.coordination.hierarchical import HierarchicalCoordinator
+        print("✓ Hierarchical coordinator")
+
+        from ucup.multimodal.fusion_engine import MultimodalFusionEngine
+        print("✓ Multimodal fusion engine")
+
+        print()
+        print("✅ All core components loaded successfully!")
+
+        # Test basic functionality
+        print()
+        print("Testing basic functionality...")
+
+        config = UCUPConfig.default()
+        print("✓ Configuration created")
+
+        manager = UCUPManager(config)
+        print("✓ Manager initialized")
+
+        engine = ProbabilisticEngine()
+        prediction = engine.predict({"test_input": 1.0})
+        print("✓ Probabilistic prediction:", prediction)
+
+        print()
+        print("🎉 UCUP Framework is fully functional!")
+
+    except Exception as e:
+        print(f"❌ Test failed: {e}")
+        return 1
+
+    return 0
+
+def show_help():
+    """Show help information."""
+    print("UCUP Framework Binary")
+    print("Usage: UCUP [command]")
+    print()
+    print("Commands:")
+    print("  info          Show framework information")
+    print("  version       Show version information")
+    print("  test          Run basic functionality test")
+    print("  help          Show this help message")
+    print()
+    print("Environment Variables:")
+    print("  UCUP_CONFIG  Path to configuration file")
+    print("  UCUP_DEBUG   Enable debug output")
+
+def main():
+    """Main entry point."""
+    if len(sys.argv) < 2:
+        print_framework_info()
+        return 0
+
+    command = sys.argv[1].lower()
+
+    if command == "info":
+        print_framework_info()
+    elif command == "version":
+        print_version()
+    elif command == "test":
+        return run_basic_test()
+    elif command == "help" or command == "-h" or command == "--help":
+        show_help()
+    else:
+        print(f"Unknown command: {command}")
+        print("Use 'UCUP help' for available commands")
+        return 1
+
+    return 0
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except KeyboardInterrupt:
+        print("\nInterrupted by user")
+        sys.exit(130)
+    except Exception as e:
+        print(f"Fatal error: {e}")
+        sys.exit(1)
