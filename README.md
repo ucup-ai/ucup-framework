@@ -320,6 +320,6 @@ For questions, issues, or contributions:
 
 ---
 
-**Version**: 1.0.0
+**Version**: 4.0.1
 **Platform**: macOS 10.15+
 **Python**: 3.8+

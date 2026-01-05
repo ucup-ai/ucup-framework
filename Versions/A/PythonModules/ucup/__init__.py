@@ -1,113 +1,394 @@
+# UCUP/src/ucup/__init__.py
 """
-UCUP Framework - macOS Unified Cognitive Uncertainty Processing.
-
-A macOS-native framework inspired by UCUP, featuring:
-- Core ML accelerated probabilistic reasoning
-- Grand Central Dispatch coordination
-- Vision and AVFoundation multimodal processing
-- Security framework integration
-- Native macOS performance optimizations
+UCUP Framework - Unified Cognitive Uncertainty Processing.
 
 Copyright (c) 2025 UCUP Framework Contributors. All rights reserved.
-Licensed under the Apache License, Version 2.0
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 """
+from .advanced_probabilistic import (
+    AlphaZeroMCTS,
+    BayesianAgentNetwork,
+    BayesianNetwork,
+    BayesianNode,
+    ConditionalProbabilityTable,
+    DeepQLearningMDP,
+    MarkovDecisionProcess,
+    MCTSNode,
+    MCTSReasoner,
+    MDPAction,
+    MDPBasedCoordinator,
+    MDPState,
+    MDPTransition,
+    MonteCarloTreeSearch,
+    PUCTNode,
+    QLearningMDP,
+)
 
-__version__ = "1.0.0"
-__author__ = "UCUP Framework Contributors"
+# Smart API Discovery & Auto-Import System
+from .api_discovery import (
+    APIDiscoveryEngine,
+    ComponentMetadata,
+    ExportMetadata,
+    create_auto_import_map,
+    discover_ucup_api,
+    enhance_type_hints_for_module,
+    generate_module_exports,
+    get_components_by_category,
+    get_discovery_engine,
+    get_smart_import_suggestions,
+    search_ucup_components,
+)
+from .cloud_deployment import (
+    AWSDeploymentProvider,
+    AzureDeploymentProvider,
+    CloudConfig,
+    CloudDeploymentManager,
+    CloudDeploymentProvider,
+    DeploymentResult,
+    DeploymentSpec,
+    GCPDeploymentProvider,
+    create_cloud_config_from_env,
+    create_cloud_deployment_manager,
+    create_deployment_spec_from_config,
+    deploy_to_cloud,
+    destroy_cloud_deployment,
+    get_cloud_status,
+)
+from .config import create_ucup_system, load_ucup_config
+from .errors import ErrorHandler, ProbabilisticError, ValidationError, get_error_handler
+from .feature_flags import (
+    FeatureFlag,
+    FeatureFlagManager,
+    FeatureFlagState,
+    get_feature_manager,
+    is_feature_enabled,
+    require_feature,
+)
+from .gemini_adapter import (
+    GeminiAdapter,
+    create_gemini_adapter,
+)
+from .memory_management import (
+    CacheManager,
+    MemoryMonitor,
+    ProviderManager,
+    cached_operation,
+    force_memory_cleanup,
+    get_cache_manager,
+    get_memory_monitor,
+    get_memory_report,
+    get_provider_manager,
+    monitored_operation,
+)
+from .metrics import (
+    BenefitsDisplay,
+    MetricsTracker,
+    get_global_tracker,
+    record_build_metrics,
+    show_build_benefits,
+    show_test_benefits,
+)
 
-# Core imports
-from .core.config import UCUPConfig
-from .core.manager import UCUPManager
-from .core.bridge import ObjectiveCBridge
+# Import from multimodal submodules
+from .multimodal.fusion_engine import (
+    FusedAnalysis,
+    MultimodalFusionEngine,
+    MultimodalInputs,
+    create_fusion_engine,
+    fuse_multimodal,
+)
+from .multimodal.streaming_processor import (
+    RealTimeStreamingProcessor,
+    StreamChunk,
+    StreamingAnalysis,
+)
+from .observability import (
+    DecisionExplorer,
+    DecisionTracer,
+    DecisionVisualization,
+    LiveAgentMonitor,
+    ReasoningVisualizer,
+)
+from .agent_monitoring import (
+    AgentMonitor,
+    PerformanceValidator,
+    BehaviorValidator,
+    AgentHealth,
+    ValidationSeverity,
+    AgentMetrics,
+    ValidationIssue,
+    AgentHealthReport,
+    get_global_monitor,
+    record_agent_metrics,
+    validate_agent,
+    get_agent_health_report,
+)
+from .probabilistic import AlternativePath, ProbabilisticAgent, ProbabilisticResult
+from .reliability import (
+    AutomatedRecoveryPipeline,
+    FailureDetector,
+    StateCheckpointer,
+)
+from .coordination import (
+    HierarchicalCoordination,
+    DebateCoordination,
+    MarketBasedCoordination,
+    SwarmCoordination,
+    AdaptiveOrchestrator,
+    ContextAwareStrategySelector,
+    SeamlessStrategyTransition,
+)
 
-# Probabilistic reasoning (Core ML accelerated)
-from .probabilistic.engine import ProbabilisticEngine
-from .probabilistic.agent import ProbabilisticAgent, ProbabilisticResult
+# UCUP 4.0: Intelligent API Suggestions System
+from .smart_suggestions import (
+    SmartImportSuggester,
+    get_component_help,
+    get_smart_suggestions,
+    suggest_related_components,
+)
+from .test_environments import (
+    CondaEnvironmentManager,
+    EnvironmentManager,
+    TestEnvironment,
+    TestEnvironmentManager,
+    TestResult,
+    TestRunner,
+    TestSuite,
+    VenvEnvironmentManager,
+    create_default_test_environments,
+    generate_test_template,
+    run_ucup_tests,
+    setup_ucup_test_environment,
+)
+from .testing import (
+    AdversarialTestGenerator,
+    AgentNetworkIntegrationTester,
+    AgentTestSuite,
+    APITestingHarness,
+    BenchmarkIntegration,
+    ComparativeModelTester,
+    CustomerServiceContext,
+    DynamicScenarioGenerator,
+    ExpectedOutcome,
+    IntelligentTestGenerator,
+    ModelPrediction,
+    PerformanceDegradationTester,
+    ProbabilisticAssert,
+    Scenario,
+    ScenarioContext,
+    ScenarioGenerationResult,
+    TestRun,
+    TestScenario,
+    UniversalInput,
+    UniversalModelInterface,
+    UserSimulationTester,
+)
+from .toon.toon_formatter import (
+    TokenMetrics,
+    ToonConversionResult,
+    ToonFormatter,
+    TOONOptimizer,
+    ToonSchema,
+)
+from .validation import ValidationReport, validate_data
 
-# Coordination (GCD-based)
-from .coordination.hierarchical import HierarchicalCoordinator
-from .coordination.swarm import SwarmCoordinator
-from .coordination.adaptive import AdaptiveCoordinator
+# Plugin System
+from .plugins import (
+    PluginInterface,
+    AIPlugin,
+    AgentPlugin,
+    ModelAdapterPlugin,
+    ToolPlugin,
+    WorkflowPlugin,
+    PluginManager,
+)
 
-# Multimodal processing (Vision + AVFoundation)
-from .multimodal.fusion_engine import MultimodalFusionEngine
+# MultimodalAgentTester is optional - import it separately if needed
+# Note: testing/ dir contains additional testing utilities but is not a package
+MultimodalAgentTester = None
 
-# Testing and validation
-from .testing.agent_tester import AgentTester
-from .testing.performance_validator import PerformanceValidator
-from .testing.scenario_generator import ScenarioGenerator
+__version__ = "4.0.1"
 
-# Observability
-from .observability.monitor import SystemMonitor
-from .observability.metrics import MetricsCollector
-from .observability.visualizer import DecisionVisualizer
-
-# Initialize the framework
-def initialize_ucup(config_path: str = None) -> UCUPManager:
-    """
-    Initialize the UCUP framework with optional configuration.
-
-    Args:
-        config_path: Path to configuration file (optional)
-
-    Returns:
-        UCUPManager: The main framework manager instance
-    """
-    config = UCUPConfig.load(config_path) if config_path else UCUPConfig.default()
-    return UCUPManager(config)
-
-# Quick setup for common use cases
-def create_probabilistic_agent(model_path: str = None) -> ProbabilisticAgent:
-    """Create a probabilistic agent with optional Core ML model."""
-    manager = initialize_ucup()
-    return ProbabilisticAgent(manager, model_path)
-
-def create_multimodal_processor() -> MultimodalFusionEngine:
-    """Create a multimodal processing engine."""
-    manager = initialize_ucup()
-    return MultimodalFusionEngine(manager)
-
-def create_coordinator(strategy: str = "hierarchical") -> object:
-    """Create a coordination system."""
-    manager = initialize_ucup()
-    strategies = {
-        "hierarchical": lambda: HierarchicalCoordinator(manager),
-        "swarm": lambda: SwarmCoordinator(manager),
-        "adaptive": lambda: AdaptiveCoordinator(manager)
-    }
-    return strategies.get(strategy, strategies["hierarchical"])()
-
-# Export main classes
 __all__ = [
-    # Core
-    "UCUPConfig",
-    "UCUPManager",
-    "ObjectiveCBridge",
-    "initialize_ucup",
-
-    # Probabilistic
-    "ProbabilisticEngine",
-    "ProbabilisticAgent",
+    "load_ucup_config",
+    "create_ucup_system",
     "ProbabilisticResult",
-    "create_probabilistic_agent",
-
-    # Coordination
-    "HierarchicalCoordinator",
-    "SwarmCoordinator",
-    "AdaptiveCoordinator",
-    "create_coordinator",
-
-    # Multimodal
+    "AlternativePath",
+    "ProbabilisticAgent",
+    "show_build_benefits",
+    "show_test_benefits",
+    "record_build_metrics",
+    "get_global_tracker",
+    "MetricsTracker",
+    "BenefitsDisplay",
+    "ProbabilisticError",
+    "ValidationError",
+    "ErrorHandler",
+    "get_error_handler",
+    "ValidationReport",
+    "validate_data",
+    "AgentTestSuite",
+    "Scenario",
+    "ExpectedOutcome",
+    "TestRun",
+    "ScenarioContext",
+    "CustomerServiceContext",
+    "AdversarialTestGenerator",
+    "ProbabilisticAssert",
+    "BenchmarkIntegration",
+    "APITestingHarness",
+    "DynamicScenarioGenerator",
+    "AgentNetworkIntegrationTester",
+    "PerformanceDegradationTester",
+    "ComparativeModelTester",
+    "UserSimulationTester",
     "MultimodalFusionEngine",
-    "create_multimodal_processor",
-
-    # Testing
-    "AgentTester",
-    "PerformanceValidator",
-    "ScenarioGenerator",
-
+    "MultimodalInputs",
+    "FusedAnalysis",
+    "fuse_multimodal",
+    "create_fusion_engine",
+    "RealTimeStreamingProcessor",
+    "StreamChunk",
+    "StreamingAnalysis",
+    "MultimodalAgentTester",
+    "IntelligentTestGenerator",
+    "TestScenario",
+    "ScenarioGenerationResult",
+    "UniversalInput",
+    "ModelPrediction",
+    "UniversalModelInterface",
+    # Reliability and Recovery
+    "FailureDetector",
+    "AutomatedRecoveryPipeline",
+    "StateCheckpointer",
+    # TOON Token Optimization
+    "BayesianNetwork",
+    "BayesianNode",
+    "ConditionalProbabilityTable",
+    "MarkovDecisionProcess",
+    "MDPState",
+    "MDPAction",
+    "MDPTransition",
+    "MonteCarloTreeSearch",
+    "MCTSNode",
+    "BayesianAgentNetwork",
+    "MDPBasedCoordinator",
+    "MCTSReasoner",
+    "PUCTNode",
+    "AlphaZeroMCTS",
+    "QLearningMDP",
+    "DeepQLearningMDP",
+    # TOON Token Optimization
+    "ToonFormatter",
+    "ToonSchema",
+    "ToonConversionResult",
+    "TokenMetrics",
+    "TOONOptimizer",
     # Observability
-    "SystemMonitor",
-    "MetricsCollector",
-    "DecisionVisualizer",
+    "DecisionTracer",
+    "DecisionExplorer",
+    "DecisionVisualization",
+    "ReasoningVisualizer",
+    "LiveAgentMonitor",
+    # Memory Management
+    "MemoryMonitor",
+    "CacheManager",
+    "ProviderManager",
+    "get_memory_monitor",
+    "get_cache_manager",
+    "get_provider_manager",
+    "force_memory_cleanup",
+    "get_memory_report",
+    "cached_operation",
+    "monitored_operation",
+    # Feature Flags
+    "FeatureFlag",
+    "FeatureFlagState",
+    "FeatureFlagManager",
+    "get_feature_manager",
+    "is_feature_enabled",
+    "require_feature",
+    # Gemini Adapter
+    "GeminiAdapter",
+    "create_gemini_adapter",
+    # Cloud Deployment
+    "CloudConfig",
+    "DeploymentSpec",
+    "DeploymentResult",
+    "CloudDeploymentProvider",
+    "AWSDeploymentProvider",
+    "AzureDeploymentProvider",
+    "GCPDeploymentProvider",
+    "CloudDeploymentManager",
+    "create_cloud_deployment_manager",
+    "create_deployment_spec_from_config",
+    "create_cloud_config_from_env",
+    "deploy_to_cloud",
+    "get_cloud_status",
+    "destroy_cloud_deployment",
+    # Test Environments
+    "TestEnvironment",
+    "TestResult",
+    "TestSuite",
+    "EnvironmentManager",
+    "CondaEnvironmentManager",
+    "VenvEnvironmentManager",
+    "TestRunner",
+    "TestEnvironmentManager",
+    "create_default_test_environments",
+    "setup_ucup_test_environment",
+    "run_ucup_tests",
+    "generate_test_template",
+    # Agent Monitoring
+    "AgentMonitor",
+    "PerformanceValidator",
+    "BehaviorValidator",
+    "AgentHealth",
+    "ValidationSeverity",
+    "AgentMetrics",
+    "ValidationIssue",
+    "AgentHealthReport",
+    "get_global_monitor",
+    "record_agent_metrics",
+    "validate_agent",
+    "get_agent_health_report",
+    # Coordination
+    "HierarchicalCoordination",
+    "DebateCoordination",
+    "MarketBasedCoordination",
+    "SwarmCoordination",
+    "AdaptiveOrchestrator",
+    "ContextAwareStrategySelector",
+    "SeamlessStrategyTransition",
+    # Smart API Discovery & Auto-Import System
+    "APIDiscoveryEngine",
+    "ComponentMetadata",
+    "ExportMetadata",
+    "discover_ucup_api",
+    "get_smart_import_suggestions",
+    "search_ucup_components",
+    "get_components_by_category",
+    "generate_module_exports",
+    "create_auto_import_map",
+    "enhance_type_hints_for_module",
+    "get_discovery_engine",
+    # Plugin System
+    "PluginInterface",
+    "AIPlugin",
+    "AgentPlugin",
+    "ModelAdapterPlugin",
+    "ToolPlugin",
+    "WorkflowPlugin",
+    "PluginManager",
 ]
