@@ -7,6 +7,7 @@ Provides comprehensive testing capabilities for framework components.
 from .agent_tester import AgentTester, TestResult
 from .performance_validator import PerformanceValidator, PerformanceMetrics, BenchmarkResult
 from .scenario_generator import ScenarioGenerator, ScenarioType, GeneratedScenario, ScenarioConfig
+from .model_interfaces import ModelMetadata, ModelPrediction, UniversalInput, UniversalModelInterface
 
 __all__ = [
     "AgentTester",
@@ -17,5 +18,9 @@ __all__ = [
     "ScenarioGenerator",
     "ScenarioType",
     "GeneratedScenario",
-    "ScenarioConfig"
+    "ScenarioConfig",
+    "ModelMetadata",
+    "ModelPrediction",
+    "UniversalInput",
+    "UniversalModelInterface"
 ]

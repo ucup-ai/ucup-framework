@@ -9,7 +9,7 @@ import threading
 from typing import Dict, Any, List, Optional, Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from ..core.manager import UCUPManager
-from ..probabilistic.agent import ProbabilisticAgent
+from ..probabilistic_pkg.agent import ProbabilisticAgent
 from ..coordination.hierarchical import HierarchicalCoordinator
 
 

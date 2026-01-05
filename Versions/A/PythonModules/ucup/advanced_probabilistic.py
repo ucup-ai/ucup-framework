@@ -13,7 +13,8 @@ from collections import defaultdict, deque
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
-from .probabilistic import AgentState, ProbabilisticAgent, ProbabilisticResult
+from .probabilistic_pkg.agent import ProbabilisticAgent, ProbabilisticResult
+from .probabilistic import AgentState
 from .validation import (
     UCUPValidationError,
     validate_positive_number,
