@@ -303,9 +303,7 @@ config.set("probabilistic.model_path", "path/to/model.mlmodel")
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
 
-Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for details.
 
 ## 🙏 Acknowledgments
 
@@ -325,4 +323,3 @@ For questions, issues, or contributions:
 **Version**: 1.0.0
 **Platform**: macOS 10.15+
 **Python**: 3.8+
-**License**: Apache 2.0
