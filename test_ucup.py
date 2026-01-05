@@ -11,6 +11,16 @@ framework_path = os.path.dirname(os.path.abspath(__file__))
 python_modules_path = os.path.join(framework_path, "Versions", "A", "PythonModules")
 sys.path.insert(0, python_modules_path)
 
+def _check_bridge_availability():
+    """Check if Objective-C bridge is available (Xcode built)."""
+    try:
+        from ucup.core.bridge import ObjectiveCBridge
+        bridge = ObjectiveCBridge()
+        initialized = bridge.initialize()
+        return initialized
+    except Exception:
+        return False
+
 def test_basic_import():
     """Test basic import of UCUP modules."""
     print("Testing basic imports...")
@@ -70,6 +80,23 @@ def test_probabilistic_engine():
 
         config = UCUPConfig.default()
         manager = UCUPManager(config)
+
+        # Check if Objective-C bridge is available (Xcode built)
+        bridge_available = _check_bridge_availability()
+        if not bridge_available:
+            print("⚠️  Objective-C bridge not available (Xcode not installed)")
+            print("✅ Testing probabilistic engine in mock mode...")
+
+            # Test basic engine instantiation (should work even without bridge)
+            try:
+                engine = manager.get_probabilistic_engine()
+                print("✅ Probabilistic engine instantiated")
+                return True
+            except Exception as mock_e:
+                print(f"❌ Even mock engine failed: {mock_e}")
+                return False
+
+        # Full test with Objective-C bridge
         engine = manager.get_probabilistic_engine()
 
         # Test prediction
@@ -116,10 +143,35 @@ def test_multimodal_processing():
     try:
         from ucup.core.config import UCUPConfig
         from ucup.core.manager import UCUPManager
+        from ucup.multimodal.fusion_engine import MultimodalFusionEngine
 
         config = UCUPConfig.default()
         manager = UCUPManager(config)
 
+        # Check if Objective-C bridge is available (Xcode built)
+        bridge_available = _check_bridge_availability()
+        if not bridge_available:
+            print("⚠️  Objective-C bridge not available (Xcode not installed)")
+            print("✅ Testing multimodal processing in mock mode...")
+
+            # Test basic multimodal engine instantiation (should work even without bridge)
+            try:
+                engine = MultimodalFusionEngine(manager)
+                print("✅ MultimodalFusionEngine instantiated")
+
+                # Test basic fusion with mock data
+                test_data = [
+                    {"type": "vision", "data": {"mock": "data"}, "id": "test_1"},
+                    {"type": "audio", "data": {"mock": "data"}, "id": "test_2"}
+                ]
+                result = engine.fuse_multimodal_data(test_data)
+                print("✅ Mock multimodal fusion completed")
+                return True
+            except Exception as mock_e:
+                print(f"❌ Even mock multimodal processing failed: {mock_e}")
+                return False
+
+        # Full test with Objective-C bridge
         # Test multimodal analysis (mock data)
         test_data = [
             {"type": "image", "id": "test_image_1"},

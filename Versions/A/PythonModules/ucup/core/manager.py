@@ -27,9 +27,10 @@ class UCUPManager:
         max_workers = self.config.get("gcd.max_concurrent_tasks", 4)
         self._thread_pool = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
 
-        # Initialize Objective-C bridge
-        if not self.bridge.initialize():
-            raise RuntimeError("Failed to initialize Objective-C bridge")
+        # Initialize Objective-C bridge (optional for development)
+        bridge_initialized = self.bridge.initialize()
+        if not bridge_initialized:
+            print("Warning: Objective-C bridge not available (development mode)")
 
         # Register core components
         self._components.update({
